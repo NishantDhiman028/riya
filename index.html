@@ -1,0 +1,534 @@
+<!DOCTYPE html>
+<html lang="en">
+    <!-- Heart Barish Effect -->
+<style>
+.heart-barish {
+  pointer-events: none;
+  position: fixed;
+  top: 0; left: 0; width: 100vw; height: 100vh;
+  z-index: 9999;
+  overflow: hidden;
+}
+.heart-barish .heart {
+  position: absolute;
+  color: #e91e63;
+  font-size: 2rem;
+  opacity: 0.8;
+  animation: fall 3s linear forwards;
+}
+@keyframes fall {
+  to {
+    transform: translateY(100vh) rotate(360deg);
+    opacity: 0.7;
+  }
+}
+</style>
+<div class="heart-barish" id="heart-barish"></div>
+<script>
+function createHeart() {
+    const heart = document.createElement('div');
+    heart.className = 'heart';
+    heart.innerHTML = '<i class="fas fa-heart"></i>';
+    heart.style.left = Math.random() * 100 + 'vw';
+    heart.style.fontSize = (Math.random() * 1.5 + 1) + 'rem';
+    heart.style.opacity = Math.random() * 0.5 + 0.5;
+    document.getElementById('heart-barish').appendChild(heart);
+    setTimeout(() => heart.remove(), 3000);
+}
+setInterval(createHeart, 300);
+</script>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Raksha Bandhan | My Sweet MAASIDI</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Montserrat:wght@400;500;600;700&display=swap');
+        
+        :root {
+            --primary: #e91e63;
+            --secondary: #9c27b0;
+            --accent: #ff9800;
+            --light: #fff9f9;
+            --dark: #2d3436;
+        }
+        
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background-color: var(--light);
+            color: var(--dark);
+            overflow-x: hidden;
+        }
+        
+        .script-font {
+            font-family: 'Dancing Script', cursive;
+        }
+        
+        .hero-section {
+            background: linear-gradient(45deg, rgba(233,30,99,0.9) 0%, rgba(156,39,176,0.9) 100%);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+            clip-path: polygon(0 0, 100% 0, 100% 90%, 0 100%);
+        }
+        
+        .rakhi-string {
+            position: absolute;
+            width: 2px;
+            height: 100px;
+            background: linear-gradient(to bottom, #fff, var(--accent));
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 1;
+        }
+        
+        .rakhi-pendant {
+            width: 120px;
+            height: 120px;
+            background: linear-gradient(135deg, #ffeb3b, var(--accent));
+            border-radius: 50%;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            z-index: 2;
+            animation: swing 3s ease-in-out infinite;
+        }
+        
+        @keyframes swing {
+            0%, 100% { transform: rotate(-5deg); }
+            50% { transform: rotate(5deg); }
+        }
+        
+        .floating-element {
+            animation: float 6s ease-in-out infinite;
+        }
+        
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-20px); }
+        }
+        
+        .diagonal-section {
+            position: relative;
+            clip-path: polygon(0 10%, 100% 0, 100% 90%, 0 100%);
+            padding: 100px 0;
+            margin: -50px 0;
+        }
+        
+        .card {
+            transition: all 0.3s ease;
+            transform-style: preserve-3d;
+            position: relative;
+        }
+        
+        .card:hover {
+            transform: translateY(-10px) rotateY(5deg);
+        }
+        
+        .card-image {
+            transition: all 0.5s ease;
+        }
+        
+        .card:hover .card-image {
+            transform: scale(1.1);
+        }
+        
+        .social-icon {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+        }
+        
+        .social-icon:hover {
+            transform: translateY(-5px) rotate(10deg);
+        }
+        
+        .music-control {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.15);
+            cursor: pointer;
+            z-index: 100;
+            animation: pulse 2s infinite;
+        }
+        
+        @keyframes pulse {
+            0% { box-shadow: 0 0 0 0 rgba(233,30,99,0.4); }
+            70% { box-shadow: 0 0 0 15px rgba(233,30,99,0); }
+            100% { box-shadow: 0 0 0 0 rgba(233,30,99,0); }
+        }
+        
+        .gallery-item {
+            overflow: hidden;
+            border-radius: 10px;
+            position: relative;
+        }
+        
+        .gallery-item img {
+            transition: all 0.5s ease;
+        }
+        
+        .gallery-item:hover img {
+            transform: scale(1.1);
+        }
+        
+        .gallery-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(to top, rgba(0,0,0,0.7), transparent);
+            display: flex;
+            align-items: flex-end;
+            padding: 20px;
+            opacity: 0;
+            transition: all 0.3s ease;
+        }
+        
+        .gallery-item:hover .gallery-overlay {
+            opacity: 1;
+        }
+        
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0,0,0,0.9);
+            overflow: auto;
+        }
+        
+        .modal-content {
+            margin: auto;
+            display: block;
+            max-width: 80%;
+            max-height: 80%;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            animation: zoomIn 0.3s;
+        }
+        
+        @keyframes zoomIn {
+            from { transform: translate(-50%, -50%) scale(0.9); opacity: 0; }
+            to { transform: translate(-50%, -50%) scale(1); opacity: 1; }
+        }
+        
+        .close {
+            position: absolute;
+            top: 20px;
+            right: 30px;
+            color: white;
+            font-size: 35px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .close:hover {
+            transform: rotate(90deg);
+        }
+    </style>
+</head>
+<body>
+    <!-- Audio Element -->
+    <!-- Audio Element -->
+<audio id="bg-music" loop>
+    <source src="mydi.mp3" type="audio/mpeg">
+    Your browser does not support the audio element.
+</audio>
+
+<!-- Music Control -->
+<div class="music-control" id="music-control">
+    <i class="fas fa-music text-pink-500 text-xl"></i>
+</div>
+    
+    <!-- Social Media Share -->
+    <div class="fixed top-5 right-5 z-50 flex flex-col gap-3">
+       
+        <div class="social-icon bg-white" onclick="shareToWhatsApp()">
+            <i class="fab fa-whatsapp text-green-500"></i>
+            <script>
+function shareToWhatsApp() {
+    const phoneNumber = "9720739563";
+    const message = encodeURIComponent("Happy Raksha Bandhan MAASIDI! Check out this special page: " + window.location.href);
+    window.open(`https://wa.me/${phoneNumber}?text=${message}`, "_blank");
+}
+</script>
+<!-- ...existing code... -->
+        </div>
+            <a href="https://www.instagram.com/nishant_d3011?igsh=MXR3cjUweXBlOGF4dQ==" target="_blank">
+  <img src="https://upload.wikimedia.org/wikipedia/commons/a/a5/Instagram_icon.png" alt="Instagram" width="40" height="40">
+</a>
+
+        </div>
+    </div>
+    
+    <!-- Image Modal -->
+    <div id="image-modal" class="modal">
+        <span class="close" id="close-modal">&times;</span>
+        <img class="modal-content" id="modal-image">
+    </div>
+    
+    <!-- Hero Section -->
+    <section class="hero-section text-white text-center">
+        <div class="absolute w-full h-full bg-cover bg-center opacity-10" style="background-image: url('https://images.unsplash.com/photo-1532039259942-48deb42b6abc?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');"></div>
+        
+        <div class="absolute bottom-0 left-0 right-0 h-20 bg-white"></div>
+        
+        <div class="rakhi-string"></div>
+        <div class="rakhi-pendant">
+            <i class="fas fa-heart text-white text-4xl"></i>
+        </div>
+        
+        <div class="container mx-auto px-4 relative z-10 mt-40">
+            <h1 class="script-font text-6xl md:text-8xl mb-6">Happy Raksha Bandhan MAASIDIDI❤</h1>
+            <p class="text-xl md:text-2xl max-w-2xl mx-auto mb-8">A celebration of the eternal bond between a brother and his beloved sister (NISHANT DHIMAN/RIYA DIDI)</p>
+            <button class="bg-white text-pink-600 px-8 py-3 rounded-full font-medium hover:bg-gray-100 transition duration-300 shadow-lg">
+                Scroll to Explore
+            </button>
+        </div>
+    </section>
+    
+    <!-- Featured Explanation Section -->
+    <section class="py-20 bg-white">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-16">
+                <h2 class="script-font text-4xl md:text-5xl text-pink-600 mb-4"> For My lovely MAASIDIDI❤</h2>
+                <p class="text-lg text-gray-600 max-w-2xl mx-auto">Understanding the bond that lasts a lifetime</p>
+            </div>
+            <div class="max-w-3xl mx-auto text-center">
+                <p class="text-lg text-gray-700 mb-8">
+            For my mother/sister💖
+
+Sister, you are the most beautiful gift of my life. You are not only my sister you are my mother, but also my first friend, first teacher and my constant companion. When no one understood, you understood everything I said without saying anything.
+
+You put yourself behind for my happiness so many times. There is motherly love in your affection and there is closeness hidden even in your scolding.love you didi thankyou for always being there.thanks for coming into my life and making it wonderful.thank you for treating me like real brother or son. your love,support,care and Understanding means a lot to me. you are very precious to me.
+                </p>
+                <p class="text-lg text-gray-700 mb-8">
+                    You are not my didi, you are the guardians angel who has watched over me with unconditional love your presence in my life has been a blessing that words cannot fully express on the special day of rakshabandhan, i want you to know that you hold a very special place in my heart and inam grateful for every moments of love care and guidance you have given me.Didi i am very lucky that you have come in my life i feel that we have a relationalship from my past life. Didi i pary to god that you always keep smiling and remain happy.there should never be tears in yours eyes you always remain happy thoughout you life.Happy rakshabandhan Didi.
+                </p>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Message Section -->
+    <section class="py-20 bg-white">
+        <div class="container mx-auto px-4">
+            <div class="max-w-4xl mx-auto text-center">
+                <h2 class="script-font text-4xl md:text-5xl text-pink-600 mb-6">My Beloved MASSIDI🫂</h2>
+                <div class="w-24 h-1 bg-pink-500 mx-auto mb-10"></div>
+                
+                <div class="bg-pink-50 rounded-xl p-8 md:p-12 relative overflow-hidden mb-12">
+                    <div class="absolute -top-10 -left-10 text-pink-200 text-9xl z-0">
+                        <i class="fas fa-quote-left"></i>
+                    </div>
+                    <p class="relative z-10 text-lg md:text-xl text-gray-700 leading-relaxed">
+                        Maasisdi I want you to know how much you mean to me you are not just my sister, my mother, my good friend, my biggest supporter. Thus sacred tvread symbolizes my love fir you maasididi and my promise to always protect you and I promise you Didi, I will never hurt you. I want to see you happy for life. And Didi, please forgive me. I am your brother and son maasididi. Please forgive your son, Didi.I promise you, Didi, I will be your best brother and son Didi, thank you for everything.
+Your brother/son (Nishant Dhiman)
+                    </p>
+                    <div class="absolute -bottom-10 -right-10 text-pink-200 text-9xl z-0">
+                        <i class="fas fa-quote-right"></i>
+                    </div>
+                </div>
+             <!-- Place this code after your message section, before the Photo Gallery Section -->
+<div class="flex flex-col items-center gap-4 my-8">
+    <!-- Play MyDi Song Button -->
+    <button id="play-btn-mydi" class="bg-gradient-to-r from-pink-500 to-purple-500 text-white px-8 py-4 rounded-full font-medium hover:opacity-90 transition duration-300 shadow-lg flex items-center">
+        <i class="fas fa-play mr-3"></i> Play Song MyDi
+    </button>
+    <audio id="audio-mydi">
+        <source src="mydi.mp3" type="audio/mpeg">
+        Your browser does not support the audio element.
+    </audio>
+
+    <!-- Play MyDidi Song Button -->
+    <button id="play-btn-mydidi" class="bg-gradient-to-r from-yellow-400 to-pink-500 text-white px-8 py-4 rounded-full font-medium hover:opacity-90 transition duration-300 shadow-lg flex items-center">
+        <i class="fas fa-play mr-3"></i> Play Song MyDidi
+    </button>
+    <audio id="audio-mydidi">
+        <source src="mydidi.mp3" type="audio/mpeg">
+        Your browser does not support the audio element.
+    </audio>
+</div>
+<script>
+    // MyDi Song
+    const playBtnMyDi = document.getElementById('play-btn-mydi');
+    const audioMyDi = document.getElementById('audio-mydi');
+    playBtnMyDi.addEventListener('click', function() {
+        if (audioMyDi.paused) {
+            audioMyDi.play();
+            playBtnMyDi.innerHTML = '<i class="fas fa-pause mr-3"></i> Pause Song MyDi';
+        } else {
+            audioMyDi.pause();
+            playBtnMyDi.innerHTML = '<i class="fas fa-play mr-3"></i> Play Song MyDi';
+        }
+    });
+
+    // MyDidi Song
+    const playBtnMyDidi = document.getElementById('play-btn-mydidi');
+    const audioMyDidi = document.getElementById('audio-mydidi');
+    playBtnMyDidi.addEventListener('click', function() {
+        if (audioMyDidi.paused) {
+            audioMyDidi.play();
+            playBtnMyDidi.innerHTML = '<i class="fas fa-pause mr-3"></i> Pause Song MyDidi';
+        } else {
+            audioMyDidi.pause();
+            playBtnMyDidi.innerHTML = '<i class="fas fa-play mr-3"></i> Play Song MyDidi';
+        }
+    });
+</script>
+
+            </div>
+        </div>
+    </section>
+
+    
+    <!-- Photo Gallery Section -->
+    <section class="diagonal-section bg-gray-50">
+        <div class="container mx-auto px-4 py-20">
+            <div class="text-center mb-16">
+                <h2 class="script-font text-4xl md:text-5xl text-pink-600 mb-4">Appreciate Memories With My Maasididi❤</h2>
+                <p class="text-lg text-gray-600 max-w-2xl mx-auto">Moments captured beautiful bond (NISHANT/RIYADIDI❤)</p>
+            </div>
+            
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                <div class="gallery-item h-64 rounded-xl overflow-hidden" onclick="openModal('https://images.unsplash.com/photo-1512470876302-972faa2aa9a4?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60')">
+                    <img src="DIDI.jpg" alt="Didi Photo" class="w-full h-full object-cover">
+    <div class="gallery-overlay">
+        <p class="text-white font-medium">My Lovely Didi</p>
+    </div>
+</div>
+                <div class="gallery-item h-64 rounded-xl overflow-hidden" onclick="openModal('didi1.jpg')">
+    <img src="didi1.jpg" alt="Didi 1 Photo" class="w-full h-full object-cover">
+    <div class="gallery-overlay">
+        <p class="text-white font-medium">Didi Special Moment</p>
+    </div>
+</div>
+               <div class="gallery-item h-64 rounded-xl overflow-hidden" onclick="openModal('didi2.jpg')">
+    <img src="didi2.jpg" alt="Didi 2 Photo" class="w-full h-full object-cover">
+    <div class="gallery-overlay">
+        <p class="text-white font-medium">Didi Cherished Memory</p>
+    </div>
+</div>
+            <div class="gallery-item h-64 rounded-xl overflow-hidden" onclick="openModal('didi3.jpg')">
+    <img src="didi3.jpg" alt="Didi 3 Photo" class="w-full h-full object-cover">
+    <div class="gallery-overlay">
+        <p class="text-white font-medium">Didi Beautiful Smile</p>
+    </div>
+</div>
+                <!-- Add this inside your photo gallery grid with the other gallery-item divs -->
+
+<div class="gallery-item h-64 rounded-xl overflow-hidden" onclick="openModal('didi14.jpg')">
+    <img src="didi14.jpg" alt="Didi 14 Photo" class="w-full h-full object-cover">
+    <div class="gallery-overlay">
+        <p class="text-white font-medium">Special Memory</p>
+    </div>
+</div>
+                <!-- Add this inside your photo gallery grid with the other gallery-item divs -->
+
+<div class="gallery-item h-64 rounded-xl overflow-hidden" onclick="openModal('didi15.jpg')">
+    <img src="didi15.jpg" alt="Didi 15 Photo" class="w-full h-full object-cover">
+    <div class="gallery-overlay">
+        <p class="text-white font-medium">Memory</p>
+    </div>
+</div>
+            </div>
+        </div>
+    </section>
+    <!-- Add this after your Hero Section and before the Featured Explanation Section -->
+
+<section class="py-20 bg-gradient-to-r from-pink-100 via-purple-100 to-yellow-100">
+  <div class="container mx-auto px-4">
+    <div class="flex flex-col md:flex-row items-center justify-between gap-12">
+      <div class="md:w-1/2 text-center md:text-left">
+        <h2 class="script-font text-5xl text-pink-600 mb-4">A Bond Like No Other</h2>
+        <p class="text-lg text-gray-700 mb-6">
+          Raksha Bandhan is a celebration of love, trust, and the unbreakable bond between siblings. It's a day to cherish memories, share laughter, and promise to always be there for each other.
+        </p>
+      </div>
+      <div class="md:w-1/2 flex justify-center">
+        <div class="relative">
+          <!-- Add this inside your photo gallery grid with the other gallery-item divs -->
+
+<div class="gallery-item h-64 rounded-xl overflow-hidden" onclick="openModal('didi7.jpg')">
+    <img src="didi7.jpg" alt="Didi 7 Photo" class="w-full h-full object-cover">
+    <div class="gallery-overlay">
+        <p class="text-white font-medium">Didi 7 Special Memory</p>
+    </div>
+</div>
+          <div class="absolute -bottom-6 -right-6 bg-white rounded-full p-4 shadow-lg">
+            <i class="fas fa-heart text-pink-500 text-3xl"></i>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+ <div class="mt-8 flex flex-col items-center gap-4">
+  <!-- YouTube Button -->
+  <a href="https://youtu.be/Y_vDIZAGOXQ?si=yWG81n683IIqC69w" target="_blank" class="inline-flex items-center gap-3 bg-red-500 hover:bg-red-600 text-white px-6 py-3 rounded-full font-semibold shadow-lg transition">
+    <i class="fab fa-youtube text-2xl"></i>
+    Watch Video
+  </a>
+
+  <!-- Gift Button Centered -->
+  <button id="gift-btn" class="inline-flex items-center gap-3 bg-yellow-400 hover:bg-yellow-500 text-pink-700 px-6 py-3 rounded-full font-bold shadow-lg transition text-lg">
+    <i class="fas fa-gift text-2xl"></i>
+    Open Gift
+  </button>
+</div>
+
+<!-- Gift Modal (hidden by default) -->
+<div id="gift-modal" class="fixed inset-0 bg-black bg-opacity-60 flex items-center justify-center z-50 hidden">
+  <div class="bg-white rounded-2xl p-8 flex flex-col items-center shadow-2xl relative">
+    <button onclick="document.getElementById('gift-modal').classList.add('hidden')" class="absolute top-2 right-4 text-2xl text-pink-500 hover:text-pink-700">&times;</button>
+    <img src="ma2.jpg" alt="Gift Photo" class="w-40 h-40 mb-4 rounded-xl shadow-lg animate-bounce">
+    <h3 class="script-font text-3xl text-pink-600 mb-2">Surprise Gift!</h3>
+    <audio id="gift-audio" src="ma1.mp3"></audio>
+    <div class="mt-4">
+      <span class="text-4xl animate-pulse">🎁✨</span>
+    </div>
+  </div>
+</div>
+
+<script>
+  // Gift button click event
+  document.getElementById('gift-btn').onclick = function() {
+    document.getElementById('gift-modal').classList.remove('hidden');
+    var audio = document.getElementById('gift-audio');
+    audio.currentTime = 0;
+    audio.play();
+  };
+</script>
+
+
+</section>
+
+    <footer class="text-center py-8 bg-white text-pink-600 script-font text-xl">
+        Made by <span class="font-bold">Nishant Dhiman</span> for <span class="font-bold">Riya Didi</span> ❤️
+    </footer>
+</body>
+</html>
